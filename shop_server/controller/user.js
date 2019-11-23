@@ -16,7 +16,7 @@ router.post('/registUser', async (ctx) => {
     }).catch(err => {
         ctx.body = {
             code: 500,
-            message: err
+            message: '用户名已存在'
         };
     });
 });

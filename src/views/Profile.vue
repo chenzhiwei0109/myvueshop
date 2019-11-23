@@ -65,7 +65,7 @@ export default {
             this.$toast.success("注册成功");
             this.registUsername = this.registPassword = "";
           } else {
-            this.$toast.fail("注册失败");
+            this.$toast.fail("用户名已存在");
           }
         })
         .catch(err => {
