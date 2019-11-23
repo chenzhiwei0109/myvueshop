@@ -12,10 +12,10 @@ import '@/assets/js/rem.js'
 // import Vant from 'vant';
 // import 'vant/lib/index.css';
 // Vue.use(Vant);
+import { Toast, CellGroup, Field, Tab, Tabs, Button, Icon, NavBar, Tabbar, TabbarItem, Swipe, SwipeItem, Lazyload } from 'vant'
+Vue.use(Toast).use(CellGroup).use(Field).use(Tab).use(Tabs).use(Button).use(Icon).use(NavBar).use(Tabbar).use(TabbarItem).use(Swipe).use(SwipeItem).use(Lazyload)
 
-//按需引入   
-import { Button, Icon, NavBar, Tabbar, TabbarItem, Swipe, SwipeItem, Lazyload } from 'vant'
-Vue.use(Button).use(Icon).use(NavBar).use(Tabbar).use(TabbarItem).use(Swipe).use(SwipeItem).use(Lazyload)
+import '@/mock/mock.js';
 new Vue({
   router,
   store,
