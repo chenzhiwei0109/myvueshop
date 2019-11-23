@@ -26,7 +26,7 @@ router.use('/type', type.routes());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-// 连接数据库
+
 const { connect, initSchemas } = require('./init.js');
 (async () => {
     await connect();

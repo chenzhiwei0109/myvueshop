@@ -4,7 +4,6 @@ let router = new Router();
 const mongoose = require('mongoose');
 const fs = require('fs');
 
-// 导入产品数据
 router.get('/insertProductInfo', async (ctx) => {
     fs.readFile('./data/product.json', 'utf8', (err, data) => {
         data = JSON.parse(data);
@@ -25,6 +24,13 @@ router.get('/insertProductInfo', async (ctx) => {
         });
     });
     ctx.body = '导入数据';
+});
+
+router.get('/getProductsByType', async (ctx) => {
+    const Product = mongoose.model('Product');
+    await Product.find({ type: ctx.query.typeId }).skip(parseInt(ctx.query.start)).limit(parseInt(ctx.query.limit)).exec().then(res => {
+        ctx.body = res;
+    })
 });
 
 module.exports = router;
