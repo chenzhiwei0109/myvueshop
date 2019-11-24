@@ -1,19 +1,29 @@
 # myvueshop
 
-## Project setup
+## 文件引入
 ```
-npm install
+npm install || cnpm install
 ```
 
-### Compiles and hot-reloads for development
+### 项目启动
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 后端启动
 ```
-npm run build
+cd shop_server
+npm install  || cnpm install
+node index.js
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 加载数据库
+地址栏输入
+http://localhost:3000/product/insertProductInfo //加载产品
+http://localhost:3000/type/insertType  //加载分类
+
+node index.js  //重启服务
+
+
+
+
