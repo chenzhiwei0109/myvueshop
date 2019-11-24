@@ -17,11 +17,13 @@ const Router = require('koa-router');
 let user = require('./controller/user.js');
 let product = require('./controller/product.js');
 let type = require('./controller/type.js');
+let cart = require('./controller/cart.js');
 
 let router = new Router();
 router.use('/user', user.routes());
 router.use('/product', product.routes());
 router.use('/type', type.routes());
+router.use('/cart', cart.routes());
 
 app.use(router.routes());
 app.use(router.allowedMethods());
@@ -35,7 +37,7 @@ const { connect, initSchemas } = require('./init.js');
 
 
 app.use(async (ctx) => {
-    ctx.body = 'hello weichuang';
+    ctx.body = '陈志伟';
 })
 
 app.listen(3000, () => {

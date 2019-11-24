@@ -7,7 +7,7 @@ export default new Vuex.Store({
   // 保存状态
   state: {
     userInfo: {
-      userName: '未登录'
+
     }
   },
   // 计算属性 多个数据筛选 一些数据的计算

@@ -21,7 +21,12 @@
             finished-text="没有更多了"
             :finished="finished"
           >
-            <div class="content-item" v-for="(item, index) in productList" :key="index">
+            <div
+              @click="goDetail(item._id)"
+              class="content-item"
+              v-for="(item, index) in productList"
+              :key="index"
+            >
               <div class="img">
                 <img :src="item.img" alt />
               </div>
@@ -57,13 +62,10 @@ export default {
       method: "get"
     })
       .then(res => {
-        console.log(res);
         this.types = res.data;
         this.selectCategory(this.typeId, this.active);
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => {});
   },
   methods: {
     selectCategory(typeId, index) {
@@ -90,19 +92,18 @@ export default {
             this.productList = this.productList.concat(res.data);
           } else {
             this.finished = true;
-            console.log(res.data.length);
           }
           this.loading = false;
         })
-        .catch(err => {
-          console.log(err);
-        });
+        .catch(err => {});
     },
     onLoad() {
       setTimeout(() => {
-        console.log(1);
         this.getProductList();
       }, 1000);
+    },
+    goDetail(id) {
+      this.$router.push(`/detail/${id}`);
     }
   }
 };
@@ -132,7 +133,7 @@ export default {
 .content {
   display: flex;
   flex-wrap: wrap;
-//   padding-bottom: 1.1rem;
+  //   padding-bottom: 1.1rem;
   &-item {
     width: 40%;
     padding: 0 10px;

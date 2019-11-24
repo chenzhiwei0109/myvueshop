@@ -3,7 +3,7 @@
     <!-- 头部 -->
     <van-nav-bar title="首页" class="nav-title">
       <van-icon name="search" slot="left"></van-icon>
-      <van-icon @click="isLogin()" slot="right">退出{{userInfo.userName}}</van-icon>
+      <van-icon @click="isLogin()" slot="right">{{JSON.stringify(userInfo) === '{}' ? '未登录' : userInfo.userName}}</van-icon>
     </van-nav-bar>
 
     <!-- 轮播图 -->
@@ -53,7 +53,7 @@ import { mapActions } from "vuex";
 export default {
   data() {
     return {
-      num:3,
+      num: 3,
       carouselItem: [
         // 轮播图
         {
@@ -314,7 +314,6 @@ export default {
   created() {
     let url5 = url.getVarietyItem;
     axios.get(url5).then(res => {
-      // console.log(res);
       this.varietyItem = res.data;
     });
   },
@@ -324,17 +323,13 @@ export default {
   methods: {
     ...mapActions(["loginAction"]),
     isLogin() {
-      if (this.userInfo.userName === "未登录") {
-        // console.log(this.userInfo.userName)
+      if (JSON.stringify(this.userInfo) === "{}") {
         this.$router.push("/profile");
       } else {
         let newInfo = {
-          userInfo: {
-            userName: "未登录"
-          }
+          userInfo: {}
         };
         this.loginAction(newInfo.userInfo);
-        console.log(this.userInfo);
         this.$router.push("/profile");
       }
     }

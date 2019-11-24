@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-tabs v-model="active">
+    <van-tabs>
       <van-tab title="登录">
         <van-cell-group>
           <van-field label="用户名" required clearable placeholder="请输入用户名" v-model="loginUsername"></van-field>
@@ -50,7 +50,6 @@ import { mapActions } from "vuex";
 export default {
   data() {
     return {
-      active: 0,
       loginUsername: "",
       loginPassword: "",
       registUsername: "",
@@ -62,7 +61,10 @@ export default {
     ...mapActions(["loginAction"]),
     //登录处理方法
     loginHandler() {
-      (this.loginLoading = true),
+      if (!this.loginUsername || !this.loginPassword) {
+        this.$toast.fail("请输入用户名或密码");
+      } else {
+        this.loginLoading = true;
         axios({
           url: url.loginUser,
           method: "post",
@@ -85,18 +87,17 @@ export default {
                   this.$toast.success("登录成功");
                   // 保存登录状态
                   this.loginAction(res.data.userInfo);
-                  this.$router.push("/");
+                  this.$router.go(-1);
                 })
                 .catch(err => {
                   this.$toast.fail("登录失败");
-                  // console.log(err);
                 });
             }
           })
           .catch(err => {
-            // console.log(err);
             this.$toast.fail("登录失败");
           });
+      }
     },
     // 注册的处理方法
     registHandler() {
@@ -111,10 +112,9 @@ export default {
         .then(res => {
           if (res.data.code == 200) {
             this.$toast.success("注册成功");
-            this.active = 0;
             this.registUsername = this.registPassword = "";
           } else {
-            this.$toast.fail("用户名已存在");
+            this.$toast.fail("注册失败");
           }
         })
         .catch(err => {

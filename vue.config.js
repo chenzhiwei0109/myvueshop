@@ -1,5 +1,7 @@
 module.exports = {
   devServer: {
-    open: true
-  }
+    open: true,
+    port:8080
+  },
+  productionSourceMap: false
 }
