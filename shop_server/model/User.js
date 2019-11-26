@@ -19,7 +19,7 @@ userSchema.pre('save', function (next) {
     })
 })
 
-// 定义方法用来比较
+// 用来比较两者是否相同
 userSchema.methods = {
     comparePassword: (_password, password) => {
         return new Promise((resolve, reject) => {
