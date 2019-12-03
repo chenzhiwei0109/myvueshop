@@ -23,7 +23,7 @@
           <div class="hot-swiper-content">
             <img :src="item.img" alt />
             <div>{{ item.name }}</div>
-            <div>￥{{ item.price }}</div>
+            <div class="hot-swiper-content-price">￥{{ item.price }}</div>
           </div>
         </swiper-slide>
       </swiper>
@@ -376,10 +376,12 @@ export default {
     &-content {
       width: 2rem;
       text-align: center;
+      position: relative;
       img {
         width: 2rem;
         height: 2rem;
       }
+
     }
   }
 }

@@ -35,7 +35,6 @@ const { connect, initSchemas } = require('./init.js');
     initSchemas();
 })();
 
-
 app.use(async (ctx) => {
     ctx.body = '陈志伟';
 })

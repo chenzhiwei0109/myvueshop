@@ -11,14 +11,14 @@ npm run serve
 ```
 
 ### 后端启动
-项目需要使用kv数据库mongodb
+项目需要使用mongodb
 ```
 cd shop_server
 npm install  || cnpm install
 node index.js
 ```
 
-### 加载数据库
+### 加载mongodb数据库
 ```
 地址栏输入
 http://localhost:3000/product/insertProductInfo //加载产品

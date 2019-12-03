@@ -19,6 +19,7 @@ router.post('/addCart', async (ctx) => {
         }
     })
 });
+
 router.get('/getCart', async (ctx) => {
     const Cart = mongoose.model('Cart');
     await Cart.find({ userId: ctx.query.userId }).populate('productId').exec().then(res => {
