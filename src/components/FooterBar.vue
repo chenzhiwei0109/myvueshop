@@ -14,14 +14,7 @@ export default {
       active: 0
     };
   },
-  // created(){
-  //   this.active = localStorage.getItem(parseInt('active'))
-  // },
-  // methods:{
-  //   change(active){
-  //     localStorage.setItem('active',active);
-  //   }
-  // }
+
 };
 </script>
 <style lang="scss">

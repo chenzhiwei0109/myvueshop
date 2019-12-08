@@ -22,7 +22,6 @@ exports.connect = () => {
         console.log(err);
         mongoose.connect(db);
     });
-
     // 连接的时候
     mongoose.connection.once('open', () => {
         console.log('数据库连接成功');
