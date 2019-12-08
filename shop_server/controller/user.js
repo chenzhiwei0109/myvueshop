@@ -9,18 +9,16 @@ router.post('/registUser', async (ctx) => {
     // 接收post请求封装成user对象
     let newUser = new User(ctx.request.body);
     // 使用save保存用户信息
+    
     await newUser.save().then(() => {
         ctx.body = {
             code: 200,
-            message: '注册成功',
-            userInfo: {
-                userName :request.userName
-            }
+            message: '注册成功'
         };
     }).catch(err => {
         ctx.body = {
             code: 500,
-            message: '用户名已存在'
+            message: '注册失败'
         };
     });
 });
@@ -38,7 +36,6 @@ router.post('/loginUser', async (ctx) => {
     await User.findOne({ userName: userName }).exec().then(async (result) => {
         // 判断result是否存在
         if (result) {
-
             // 创建model层user模型的实例化对象
             let newUser = new User();
             // 使用user模型的比较方法  

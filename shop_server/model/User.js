@@ -7,7 +7,7 @@ const userSchema = new Schema({
     password: String,
     createDate: { type: Date, default: Date.now() }
 });
-// 保存前调用这个方法
+// 注册保存在数据库之前加盐加密
 userSchema.pre('save', function (next) {
     bcrypt.genSalt(10, (err, salt) => {
         if (err) return next(err);
